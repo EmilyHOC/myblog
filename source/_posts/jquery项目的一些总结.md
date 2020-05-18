@@ -1,12 +1,10 @@
 ---
 title: jquery项目的一些总结
 date: 2020-04-30 14:16:57
-tags:
+tags: jquery
 ---
 
-`截取url里面的参数，返回一个对象,以键值对的形式`
-
-
+##### **截取url里面的参数，返回一个对象,以键值对的形式**
 
 > ```
 > function getQueryString() {
@@ -29,7 +27,7 @@ tags:
 >
 > 
 
-`doT模板渲染的方式实例`
+##### **doT模板渲染的方式实例**
 
 ```
 <script type="text/x-dot-template" id="imglist2">
@@ -47,11 +45,14 @@ tags:
 
    @{{ }}}
 </script>
+
+//@{{? i==0}} class="img-item ck"@{{??}} 
+  class="img-item"   =>这个的意思是如果i=0，class就是img-item和ck,否则就是img-item
 ```
 
 > 我要做下面的功能
 
-![](https://user-gold-cdn.xitu.io/2020/5/9/171f89cd50579d83?w=860&h=696&f=gif&s=534441)
+![](/images/jquerytest.gif)
 
 首先右边的div要变成可编辑区，
 
@@ -71,7 +72,8 @@ html 结构：
 <div class="content-block" contenteditable="true">
      <div class="yx-content"  style="display:flex;flex-wrap: wrap;">
          <div class="single-block">
-            	<p class="text-block"  onclick="changeSelect()"   							onkeyup="changeSelect()"></p>
+             <p class="text-block"  onclick="changeSelect()"  							onkeyup="changeSelect()">
+             </p>
        	</div>
         </div>
 	</div>
@@ -98,7 +100,7 @@ $(".center img").click(function(e){
 })
 ```
 
-> <div class="center"><li><img src></img></li><div>
+​    <div  class="center"><li><img src></img></li></div>
 
 > ​	做复制剪切板的功能，包括图文，引用clipboard.js,
 >
@@ -119,5 +121,93 @@ $(".center img").click(function(e){
               console.log(e);
       });
     })
+```
+
+##### **pc端返回顶部的功能**：
+
+```
+ function toTop(){
+
+ 	document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+}
+```
+
+###### **fly.js 抛物线动画**
+
+```
+$(".collect-btn").click(function(event){
+
+    var addcar = $(this); 
+
+    var width = window.innerWidth
+
+    var flyer = $('<img class="u-flyer" src="'+goods_array.picurl+'" style="width:30px;height:30px">'); 
+
+    flyer.fly({ 
+
+      start: { 
+
+        left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed 
+
+        top: event.pageY //开始位置（必填） 
+
+      }, 
+
+      end: { 
+
+        left:width, //结束位置（必填） 
+
+        top: 450, //结束位置（必填） 
+
+        width: 0, //结束时宽度 
+
+        height: 0 //结束时高度 
+
+      }, 
+
+      onEnd: function(){ //结束回调 
+        addcar.css("cursor","default").removeClass('orange').unbind('click'); 
+
+      } 
+
+    });
+```
+
+##### **列表页的懒加载：**
+
+```
+<script src="/assets/js/lazyload.js"></script>
+  // 懒加载
+  $("img.lazy").lazyload({
+     placeholder : "/assets/images/download.gif",  
+      effect: "fadeIn"
+   });
+	 doPageClick();
+```
+
+##### **jquery中的 $(#id)与document.getElementById( id )的区别**
+
+    jquery选择器 $(#id) 返回的是jquery对象，用document.getElementById( id )返回的是DOM对象。
+    
+      （1）jquery对象可以使用两种方式转换为DOM对象， [ index ] 和 .get( index )
+    
+            $(#id)[0]   得到DOM对象
+    
+            $(#id).get( 0 )   -----》  DOM对象
+
+ 
+
+
+        （2）DOM对象转成jquery对象：
+    
+                   $(DOM对象）
+##### **jquery修改浏览器title**
+
+![](/images/settingtitle.png)
+
+```
+$(document).attr("title","")
+$("title").html(res.data.goods_name)
 ```
 

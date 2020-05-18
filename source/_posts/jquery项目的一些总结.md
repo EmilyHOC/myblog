@@ -196,8 +196,6 @@ $(".collect-btn").click(function(event){
     
             $(#id).get( 0 )   -----》  DOM对象
 
- 
-
 
         （2）DOM对象转成jquery对象：
     
@@ -211,3 +209,10 @@ $(document).attr("title","")
 $("title").html(res.data.goods_name)
 ```
 
+##### 为某个节点添加元素，同时删除同类元素某个class
+
+```
+ $(".tools_nav li").eq(1).addClass("active").siblings().removeClass("active")
+```
+
+siblings(),是遍历同类元素

@@ -368,13 +368,19 @@ class App extends Component {
 export default App;
 ```
 
-##### 为什么react要配合redux来使用
+##### 
 
 ##### redux工作流程
 
-##### redux设计使用原则
 
-##### redux核心API
+
+
+
+[文章](https://www.cnblogs.com/goodjobluo/p/9077010.html)
+
+- 单一数据源 整个应用的 state 被存储在一个 Object tree 中，且只存在于唯一的Store中。
+- state 是只读的 唯一改变 state 的方法就是触发 action，action 是一个用于描述发生事件的普通对象，视图部分只需要表达想要修改的意图，所有修改都会被集中化处理。
+- 使用纯函数来执行修改 为了实现根据 action 修改 state值，我们就需要编写 Reducer。它是一个纯函数，接收先前的 state 和 action 返回新的 state ,随着应用的变大，你可以将它拆成多个小的 Reducer ,分别独立操作 state tree 中的不同部分。
 
 ##### **react异步数据如ajax请求应该放在哪个生命周期？**
 

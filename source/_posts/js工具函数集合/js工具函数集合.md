@@ -125,3 +125,8 @@ var cookieUtil = (function (window, undefined) {
 }(window));
 ```
 
+```
+var a = '111eeessaaa'
+a.replace(/[^\d]/g,'') //"111"  正则过滤
+```
+
